@@ -71,7 +71,7 @@
             <div class="d-flex gap-2 ms-auto">
                 <button class="btn btn-outline-dark" onclick="window.location.href='login.html'"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
               <button class="btn btn-outline-dark" onclick="window.location.href='register.html'"><i class="fa fa-user"></i> Register</button>
-              <button class="btn btn-outline-dark" onclick="window.location.href='cart.html'"><i class="fa fa-shopping-cart"></i> Cart (0)</button>
+              <button class="btn btn-outline-dark" onclick="window.location.href='cart.html'"><i class="fa fa-shopping-cart"></i> Cart (<span id="totalCartItems">0</span>)</button>
             </div>
           </div>
         </div>
@@ -166,7 +166,8 @@
            });
         }
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        alert(`"${product.title}" added to cart!`);
+        
+  updateCartCount();
       }
 
 
@@ -181,6 +182,32 @@
       }
     });
   });
+
+  function updateCartCount() {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    if (cartItems.length > 0) {
+      let totalItems = 0;
+      cartItems.forEach(item => {
+        totalItems += item.quantity;
+      });
+      document.getElementById('totalCartItems').textContent = totalItems;
+    } else {
+      document.getElementById('totalCartItems').textContent = 0;
+    }
+  }
+
+  // let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  // if (cartItems.length > 0) {
+  //   let totalItems = 0;
+  //   cartItems.forEach(item => {
+  //     totalItems += item.quantity;
+  //   });
+  //   document.getElementById('totalCartItems').textContent = totalItems;
+  // } else {
+  //   document.getElementById('totalCartItems').textContent = 0;
+  // }
+  updateCartCount();
+  
      </script>
 </body>
 </html>
