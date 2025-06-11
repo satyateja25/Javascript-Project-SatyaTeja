@@ -30,6 +30,18 @@
       .navbarContainer {
         margin: 0px 15px;
       }
+      .decreaseQty, .increaseQty {
+        padding: 1px;
+      }
+      .totalQty {
+        font-size: 14px;
+      }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .decreaseQty, .increaseQty {
+        padding: 1px;
+      }
+      
     }
       
       </style>
@@ -78,28 +90,28 @@
                 <div class="card-body">
                   <!-- <p>Products (<span id="total-items">0</span>): $<span id="total-price">0.00</span></p> -->
                   <div class="row justify-content-between">
-                    <div class="col-4">
+                    <div class="col-sm-6 col-md-4"style="width: auto;">
                       Products (<span id="total-items">0</span>)
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-6 col-md-4"style="width: auto;">
                       $<span id="total-price">0.00</span>
                     </div>
                   </div><br>
                   <div class="row justify-content-between">
-                    <div class="col-4">
+                    <div class="col-sm-6 col-md-4"style="width: auto;">
                         Shipping
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-6 col-md-4"style="width: auto;">
                       $<span id="shipping">30</span>
                     </div>
                   </div>
                   <!-- <p>Shipping: $<span id="shipping">30</span></p> -->
                   <hr />
                   <div class="row justify-content-between">
-                    <div class="col-4">
+                    <div class="col-4"style="width: auto;">
                      <strong>Total amount</strong>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4"style="width: auto;">
                       <strong>$<span id="grand-total">0.00</span></strong>
                     </div>
                   </div><br>
@@ -166,12 +178,12 @@
     </div>
      <div class="col-4" style="text-align:end">
         <div>
-       <button class="btn btn-md  me-2" onclick="changeQty(${index}, -1)"><i class="fa-solid fa-minus"></i></button>
+       <button class="btn btn-md   decreaseQty" onclick="changeQty(${index}, -1)"><i class="fa-solid fa-minus"></i></button>
                 ${item.quantity}
-                <button class="btn btn-md  ms-2" onclick="changeQty(${index}, 1)"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn-md   increaseQty" onclick="changeQty(${index}, 1)"><i class="fa-solid fa-plus"></i></button>
                 </div><br>
 
-         <span style="margin-right: 5px;">${item.quantity} × $${item.price}</span>
+         <span style="margin-right: 5px;display:ruby-text;" class="totalQty">${item.quantity} × $${item.price}</span>
     </div>
   </div>
 
